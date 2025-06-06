@@ -169,9 +169,9 @@ app_license = "mit"
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "globish_event_calendar.event.get_events"
-# }
+override_whitelisted_methods = {
+	"frappe.desk.doctype.event.event.get_events": "globish_event_calendar.controllers.override.custom_get_events"
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
