@@ -26,7 +26,7 @@ from frappe.utils import (
 	now_datetime,
 	nowdate,
 )
-from frappe.utils.caching import http_cache
+# from frappe.utils.caching import http_cache
 from frappe.utils.user import get_enabled_system_users
 
 weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
