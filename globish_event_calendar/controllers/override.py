@@ -276,7 +276,6 @@ def send_event_digest():
 
 
 @frappe.whitelist()
-@http_cache(max_age=5 * 60, stale_while_revalidate=60 * 60)
 def custom_get_events(
 	start: date, end: date, user: str | None = None, for_reminder: bool = False, filters=None
 ) -> list[frappe._dict]:
