@@ -26,6 +26,7 @@ from frappe.utils import (
 	now_datetime,
 	nowdate,
 )
+from frappe.utils.caching import http_cache
 from frappe.utils.user import get_enabled_system_users
 
 weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
@@ -275,6 +276,7 @@ def send_event_digest():
 
 
 @frappe.whitelist()
+@http_cache(max_age=5 * 60, stale_while_revalidate=60 * 60)
 def custom_get_events(
 	start: date, end: date, user: str | None = None, for_reminder: bool = False, filters=None
 ) -> list[frappe._dict]:
@@ -333,7 +335,6 @@ def custom_get_events(
 		AND (
 				`tabEvent`.event_type='Public'
 				OR `tabEvent`.owner=%(user)s
-				# OR `tabEvent`._assign LIKE '%%pichitchai%%'
 				OR EXISTS(
 					SELECT `tabDocShare`.name
 					FROM `tabDocShare`
