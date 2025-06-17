@@ -1,0 +1,13 @@
+	[
+   		 {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_filters",
+        "fieldname": "custom_filters",
+        "fieldtype": "JSON",
+        "label": "JSON Filters",
+        "default": "[]",
+        "insert_after": "all_day"
+    }
+]
