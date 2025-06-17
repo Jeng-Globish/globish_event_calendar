@@ -26,7 +26,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/globish_event_calendar/css/globish_event_calendar.css"
-# app_include_js = "/assets/globish_event_calendar/js/globish_event_calendar.js"
+# app_include_js = "/globish_event_calendar/event_calendar.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/globish_event_calendar/css/globish_event_calendar.css"
@@ -170,7 +170,8 @@ app_license = "mit"
 # ------------------------------
 #
 override_whitelisted_methods = {
-	"frappe.desk.doctype.event.event.get_events": "globish_event_calendar.controllers.override.custom_get_events"
+	"frappe.desk.doctype.event.event.get_events": "globish_event_calendar.controllers.override.custom_get_events",
+    "frappe.desk.calendar.get_events": "globish_event_calendar.controllers.override.get_calendar_view_events"
 }
 #
 # each overriding function accepts a `data` argument;
@@ -237,3 +238,6 @@ override_whitelisted_methods = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    "Custom Field"
+]
