@@ -4,6 +4,7 @@
 
 import json
 from datetime import date, datetime
+from urllib.parse import unquote
 
 import frappe
 import frappe.share
@@ -491,26 +492,30 @@ def get_calendar_view_events(doctype, start, end, field_map, filters=None, field
     field_map = frappe._dict(json.loads(field_map))
     fields = frappe.parse_json(fields)
     filters = json.loads(filters) if filters else []
-    
-    # ==================== DYNAMIC LOGIC START ====================
 
-    # 1. Get the calendar name from the URL the user is viewing.
     referer_url = frappe.request.headers.get('Referer', '')
     calendar_name = "none"
     ref_doc_type_name = "none"
-    # Use a regular expression to robustly find the calendar name.
+
     calendar_name = referer_url.split('?')[0].rstrip('/').split('/')[-1]
     ref_doc_type_name = referer_url.split('/')[4].capitalize()
-    # 2. Only proceed if we successfully found a calendar name in the URL.
+
+    if referer_url:
+        path_segments = referer_url.split('?')[0].rstrip('/').split('/')
+        if len(path_segments) > 4:
+            decoded_doctype = unquote(path_segments[4])
+            ref_doc_type_name = decoded_doctype.capitalize()
+        if len(path_segments) > 0:
+            calendar_name = unquote(path_segments[-1])
+        
     if calendar_name and ref_doc_type_name and calendar_name != 'default':
         try:
             calendar_view_doc = frappe.get_doc("Calendar View", calendar_name)
-            # --- DYNAMIC FILTER PARSING BLOCK ---
             stored_doctype = calendar_view_doc.get("reference_doctype")
             if ref_doc_type_name != stored_doctype:
                 frappe.log_error(f"URL doctype '{ref_doc_type_name}' does not match Calendar View's configured doctype '{stored_doctype}'.")
                 return []
-            filter_string = calendar_view_doc.get("custom_filters") # This is a Text/Data field
+            filter_string = calendar_view_doc.get("custom_filters")
             if filter_string:
                 try:
                     parsed_filter = json.loads(filter_string)
@@ -531,8 +536,6 @@ def get_calendar_view_events(doctype, start, end, field_map, filters=None, field
 					)
         except frappe.DoesNotExistError:
             frappe.log_error(f"Calendar View '{calendar_name}' not found.", "get_dynamic_calendar_events")
-            
-    # ===================== DYNAMIC LOGIC END =====================
 
     doc_meta = frappe.get_meta(doctype)
     for d in doc_meta.fields:
