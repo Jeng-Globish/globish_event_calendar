@@ -4,6 +4,7 @@
         "dt": "Calendar View",
         "module": "Globish Event Calendar",
         "name": "custom_filters",
+        "description": "Please do not leave this field empty — it will cause an error. If you have no value to enter, use ‘[]’ instead. <br> (Added by the Globish Event Calendar App')",
         "fieldname": "custom_filters",
         "fieldtype": "JSON",
         "label": "JSON Filters",
