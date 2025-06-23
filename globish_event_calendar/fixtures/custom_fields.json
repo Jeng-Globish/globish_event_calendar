@@ -1,14 +1,130 @@
-	[
-   		 {
+[
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "section_break_globish_event_calendar",
+        "description":"This section is powered by the Globish Event Calendar custom application. All functions—except for the JSON filters—utilize functionalities from FullCalendar.io. For a detailed explanation of each function, please visit the FullCalendar.io website.",
+        "fieldname": "section_break_globish_event_calendar",
+        "fieldtype": "Section Break",
+        "label": "Globish Event Calendar Settings",
+        "default": "false",
+        "insert_after": "all_day"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_scrolltime",
+        "description": "Allow calendar to automatically scrolls to the current time (minus 30 minutes) on load; otherwise, it defaults to the 'Earliest Display Time' or the start of the day.",
+        "fieldname": "custom_scrolltime",
+        "fieldtype": "Check",
+        "label": "Enable Auto-Scroll to Current Time",
+        "default": "false",
+        "insert_after": "section_break_globish_event_calendar"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_sloteventoverlap",
+        "description": "Allow events in Week and Day views (Time Grid) to visually overlap if they occur at the same time. (slotEventOverlap)",
+        "fieldname": "custom_sloteventoverlap",
+        "fieldtype": "Check",
+        "label": "Allow Event Slots to Overlap",
+        "default": "false",
+        "insert_after": "custom_scrolltime"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_scrolltimereset",
+        "description": "Automatically reset its vertical scroll position (based on your 'Default Scroll Time' or 'Enable Auto-Scroll to Current Time' settings) whenever the calendar view or date range changes. If unchecked, the calendar will attempt to remember your last scroll position.",
+        "fieldname": "custom_scrolltimereset",
+        "fieldtype": "Check",
+        "label": "scrollTimeReset",
+        "default": "false",
+        "insert_after": "custom_sloteventoverlap"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_column_break_p8c1o",
+        "fieldname": "custom_column_break_p8c1o",
+        "fieldtype": "Column Break",
+        "default": "false",
+        "insert_after": "custom_scrolltime"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_slotduration",
+        "description": "Defines the granularity of time slots displayed in Week and Day views (e.g., 00:15:00 for 15-minute slots)",
+        "fieldname": "custom_slotduration",
+        "fieldtype": "Data",
+        "label": "slotDuration",
+        "default": "false",
+        "insert_after": "custom_column_break_p8c1o"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_slotlabelinterval",
+        "description": "Sets the interval for time labels displayed on the left axis in Week and Day views (e.g., 01:00:00 for every hour)",
+        "fieldname": "custom_slotlabelinterval",
+        "fieldtype": "Data",
+        "label": "SlotLabelInterval",
+        "default": "false",
+        "insert_after": "custom_slotduration"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_slotmintime",
+        "description": "Specifies the earliest time displayed in Week and Day calendar views. This sets the initial topmost time slot shown, even when the calendar is scrolled to its earliest point (e.g., 08:00:00 for an 8 AM start)",
+        "fieldname": "custom_slotmintime",
+        "fieldtype": "Data",
+        "label": "slotMinTime",
+        "default": "false",
+        "insert_after": "custom_slotlabelinterval"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_slotmaxtime",
+        "description": "Sets the latest time displayed in Week and Day views. This defines the final visible time slot at the bottom of the calendar (e.g., 18:00:00 to end the calendar day at 6 PM)",
+        "fieldname": "custom_slotmaxtime",
+        "fieldtype": "Data",
+        "label": "slotMaxTime",
+        "default": "false",
+        "insert_after": "custom_slotmintime"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Calendar View",
+        "module": "Globish Event Calendar",
+        "name": "custom_column_break_6donk",
+        "fieldname": "custom_column_break_6donk",
+        "fieldtype": "Column Break",
+        "default": "false",
+        "insert_after": "custom_slotmaxtime"
+    },
+    {
         "doctype": "Custom Field",
         "dt": "Calendar View",
         "module": "Globish Event Calendar",
         "name": "custom_filters",
-        "description": "Please do not leave this field empty — it will cause an error. If you have no value to enter, use ‘[]’ instead. <br> (Added by the Globish Event Calendar App')",
+        "description": "Please do not leave this field empty — it will cause an error. If you have no value to enter, use ‘[]’ instead.",
         "fieldname": "custom_filters",
         "fieldtype": "JSON",
         "label": "JSON Filters",
         "default": "[]",
-        "insert_after": "all_day"
+        "insert_after": "custom_column_break_6donk"
     }
 ]
