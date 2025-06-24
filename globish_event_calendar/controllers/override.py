@@ -1,6 +1,6 @@
-# Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and Contributors
-# License: MIT. See LICENSE
-
+# This module offers a versatile function for retrieving events, adapting to different calendar views.
+# It dynamically configures the calendar by fetching settings and custom filters from the "Calendar View" DocType, determined by the current URL.
+# This enables the display of events tailored to specific filtering criteria, with method overrides managed through hooks.py's "override_whitelisted_methods" setting.
 
 import json
 from datetime import date, datetime
@@ -499,7 +499,7 @@ def get_calendar_view_events(doctype, start, end, field_map, filters=None, field
 
     calendar_name = referer_url.split('?')[0].rstrip('/').split('/')[-1]
     ref_doc_type_name = referer_url.split('/')[4].capitalize()
-
+    
     if referer_url:
         path_segments = referer_url.split('?')[0].rstrip('/').split('/')
         if len(path_segments) > 4:
