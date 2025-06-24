@@ -39,23 +39,11 @@
         "doctype": "Custom Field",
         "dt": "Calendar View",
         "module": "Globish Event Calendar",
-        "name": "custom_scrolltimereset",
-        "description": "Automatically reset its vertical scroll position (based on your 'Default Scroll Time' or 'Enable Auto-Scroll to Current Time' settings) whenever the calendar view or date range changes. If unchecked, the calendar will attempt to remember your last scroll position.",
-        "fieldname": "custom_scrolltimereset",
-        "fieldtype": "Check",
-        "label": "scrollTimeReset",
-        "default": "false",
-        "insert_after": "custom_sloteventoverlap"
-    },
-    {
-        "doctype": "Custom Field",
-        "dt": "Calendar View",
-        "module": "Globish Event Calendar",
         "name": "custom_column_break_p8c1o",
         "fieldname": "custom_column_break_p8c1o",
         "fieldtype": "Column Break",
         "default": "false",
-        "insert_after": "custom_scrolltime"
+        "insert_after": "custom_sloteventoverlap"
     },
     {
         "doctype": "Custom Field",
