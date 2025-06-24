@@ -27,6 +27,7 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/globish_event_calendar/css/globish_event_calendar.css"
 # app_include_js = "/globish_event_calendar/event_calendar.js"
+# app_include_js = "/assets/globish_event_calendar/js/calendar_overrides3.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/globish_event_calendar/css/globish_event_calendar.css"
